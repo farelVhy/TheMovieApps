@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Versi satu warna untuk "Themed icons" (Android 13+).
+     Warnanya diganti otomatis oleh sistem mengikuti wallpaper user. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:fillType="evenOdd"
+        android:pathData="M37,36H71A7,7 0,0 1,78 43V65A7,7 0,0 1,71 72H37A7,7 0,0 1,30 65V43A7,7 0,0 1,37 36Z
+            M39,44H69A3,3 0,0 1,72 47V61A3,3 0,0 1,69 64H39A3,3 0,0 1,36 61V47A3,3 0,0 1,39 44Z
+            M34.5,38.5h4v3h-4Z M41.5,38.5h4v3h-4Z M48.5,38.5h4v3h-4Z
+            M55.5,38.5h4v3h-4Z M62.5,38.5h4v3h-4Z M69.5,38.5h4v3h-4Z
+            M34.5,66.5h4v3h-4Z M41.5,66.5h4v3h-4Z M48.5,66.5h4v3h-4Z
+            M55.5,66.5h4v3h-4Z M62.5,66.5h4v3h-4Z M69.5,66.5h4v3h-4Z" />
+
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M50.5,48.2Q50.5,46.6 51.9,47.4L60.1,52.6Q61.4,53.4 60.1,54.2L51.9,59.4Q50.5,60.2 50.5,58.6Z" />
+</vector>
