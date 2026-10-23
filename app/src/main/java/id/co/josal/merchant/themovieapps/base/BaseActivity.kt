@@ -1,11 +1,13 @@
-package id.co.themovieapps.ui.base
+package id.co.josal.merchant.themovieapps.base
 
 import android.os.Bundle
-import android.view.View
+import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseActivity<VB : ViewBinding>(private val inflate: (layoutInflater: android.view.LayoutInflater) -> VB) : AppCompatActivity() {
+abstract class BaseActivity<VB : ViewBinding>(
+    private val inflate: (layoutInflater: LayoutInflater) -> VB
+) : AppCompatActivity() {
 
     protected lateinit var binding: VB
 
@@ -14,10 +16,10 @@ abstract class BaseActivity<VB : ViewBinding>(private val inflate: (layoutInflat
         binding = inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Panggil method abstract untuk setup awal di Child Activity
+        // Setup awal di Child Activity
         onViewInit()
     }
 
-    // Method yang wajib diimplementasikan di Child Activity
+    // Wajib diimplementasikan di Child Activity
     abstract fun onViewInit()
 }

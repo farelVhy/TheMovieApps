@@ -28,12 +28,12 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFram
 import id.co.josal.merchant.themovieapps.R
 import id.co.josal.merchant.themovieapps.api.model.Genre
 import id.co.josal.merchant.themovieapps.api.model.MovieDetailResponse
+import id.co.josal.merchant.themovieapps.base.BaseActivity
 import id.co.josal.merchant.themovieapps.databinding.ActivityDetailBinding
 import id.co.josal.merchant.themovieapps.helper.loadPoster
-import id.co.josal.merchant.themovieapps.ui.detail.adapter.ReviewAdapter
 import id.co.josal.merchant.themovieapps.ui.detail.viewmodel.DetailUiState
 import id.co.josal.merchant.themovieapps.ui.detail.viewmodel.DetailViewModel
-import id.co.themovieapps.ui.base.BaseActivity
+import id.co.josal.merchant.themovieapps.ui.main.adapter.ReviewAdapter
 import kotlinx.coroutines.launch
 import java.util.Locale
 
@@ -61,7 +61,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>({ ActivityDetailBindi
 
         // Negative case: ID tidak valid, tutup halaman
         if (movieId == 0) {
-            Toast.makeText(this, "Film tidak ditemukan", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.detail_not_found, Toast.LENGTH_SHORT).show()
             finish()
             return
         }
@@ -143,12 +143,13 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>({ ActivityDetailBindi
             .joinToString(" • ")
 
         binding.tvRating.text = String.format(Locale.US, "★ %.1f", detail.voteAverage)
-        binding.tvVoteCount.text = "(${detail.voteCount} suara)"
+        binding.tvVoteCount.text = getString(R.string.detail_vote_count, detail.voteCount)
 
-        binding.tvTagline.isVisible = !detail.tagline.isNullOrBlank()
-        binding.tvTagline.text = "\"${detail.tagline}\""
+        val tagline = detail.tagline
+        binding.tvTagline.isVisible = !tagline.isNullOrBlank()
+        binding.tvTagline.text = tagline?.let { getString(R.string.detail_tagline, it) }
 
-        binding.tvOverview.text = detail.overview.ifBlank { "Sinopsis belum tersedia." }
+        binding.tvOverview.text = detail.overview.ifBlank { getString(R.string.detail_synopsis_empty) }
 
         renderGenres(detail.genres)
     }
@@ -178,7 +179,11 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>({ ActivityDetailBindi
         if (runtime == null || runtime <= 0) return ""
         val hours = runtime / 60
         val minutes = runtime % 60
-        return if (hours > 0) "${hours}j ${minutes}m" else "${minutes}m"
+        return if (hours > 0) {
+            getString(R.string.detail_runtime_hours, hours, minutes)
+        } else {
+            getString(R.string.detail_runtime_minutes, minutes)
+        }
     }
 
     // ===== TRAILER =====
@@ -229,7 +234,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>({ ActivityDetailBindi
         isPlayerFailed = true
         binding.youtubePlayerView.isVisible = false
         binding.layoutTrailerMessage.isVisible = true
-        binding.tvTrailerMessage.text = "Trailer tidak bisa diputar di aplikasi"
+        binding.tvTrailerMessage.setText(R.string.trailer_cannot_play)
         binding.btnOpenYoutube.isVisible = true
         binding.btnOpenYoutube.setOnClickListener { openYoutube(videoKey) }
     }
@@ -247,8 +252,11 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>({ ActivityDetailBindi
     // ===== ULASAN =====
 
     private fun renderReviews(state: DetailUiState) {
-        binding.tvReviewTitle.text =
-            if (state.totalReviews > 0) "Ulasan (${state.totalReviews})" else "Ulasan"
+        binding.tvReviewTitle.text = if (state.totalReviews > 0) {
+            getString(R.string.detail_reviews_count, state.totalReviews)
+        } else {
+            getString(R.string.detail_reviews)
+        }
 
         reviewAdapter.submitList(state.reviews)
         binding.rvReviews.isVisible = state.reviews.isNotEmpty()

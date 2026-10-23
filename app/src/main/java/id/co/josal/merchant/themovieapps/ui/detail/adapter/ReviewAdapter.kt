@@ -1,9 +1,10 @@
-package id.co.josal.merchant.themovieapps.ui.detail.adapter
+package id.co.josal.merchant.themovieapps.ui.main.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import id.co.josal.merchant.themovieapps.R
 import id.co.josal.merchant.themovieapps.api.model.Review
 import id.co.josal.merchant.themovieapps.databinding.ItemReviewBinding
 import id.co.josal.merchant.themovieapps.helper.loadAvatar
@@ -33,15 +34,15 @@ class ReviewAdapter : RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
             // Rating ulasan sering null, sembunyikan jika tidak ada
             val rating = details.rating
             binding.tvRating.isVisible = rating != null
-            binding.tvRating.text = String.Companion.format(Locale.US, "★ %.0f/10", rating ?: 0.0)
+            binding.tvRating.text = String.format(Locale.US, "★ %.0f/10", rating ?: 0.0)
 
             // Ulasan panjang dipotong 4 baris, tap untuk membuka penuh
-            val isLongContent = review.content.length > 250
+            val isLongContent = review.content.length > LONG_CONTENT_THRESHOLD
             val isExpanded = expandedIds.contains(review.id)
             binding.tvContent.text = review.content
-            binding.tvContent.maxLines = if (isExpanded || !isLongContent) Int.MAX_VALUE else 4
+            binding.tvContent.maxLines = if (isExpanded || !isLongContent) Int.MAX_VALUE else COLLAPSED_MAX_LINES
             binding.tvReadMore.isVisible = isLongContent
-            binding.tvReadMore.text = if (isExpanded) "Tutup" else "Baca selengkapnya"
+            binding.tvReadMore.setText(if (isExpanded) R.string.review_collapse else R.string.review_read_more)
 
             binding.root.setOnClickListener {
                 if (!isLongContent) return@setOnClickListener
@@ -61,4 +62,9 @@ class ReviewAdapter : RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
     }
 
     override fun getItemCount(): Int = reviews.size
+
+    companion object {
+        private const val LONG_CONTENT_THRESHOLD = 250
+        private const val COLLAPSED_MAX_LINES = 4
+    }
 }

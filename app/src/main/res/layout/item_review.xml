@@ -20,7 +20,7 @@
             android:id="@+id/iv_avatar"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:contentDescription="Avatar"
+            android:contentDescription="@string/review_avatar_desc"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_person" />

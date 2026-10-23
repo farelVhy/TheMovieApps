@@ -2,6 +2,7 @@ package id.co.josal.merchant.themovieapps.ui.main.homefragment
 
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.ViewCompat
@@ -18,13 +19,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import id.co.josal.merchant.themovieapps.R
+import id.co.josal.merchant.themovieapps.base.BaseFragment
 import id.co.josal.merchant.themovieapps.databinding.FragmentHomeBinding
 import id.co.josal.merchant.themovieapps.ui.detail.DetailActivity
 import id.co.josal.merchant.themovieapps.ui.main.adapter.MovieAdapter
 import id.co.josal.merchant.themovieapps.ui.main.adapter.SectionHeaderAdapter
 import id.co.josal.merchant.themovieapps.ui.main.viewmodel.HomeUiState
 import id.co.josal.merchant.themovieapps.ui.main.viewmodel.HomeViewModel
-import id.co.themovieapps.ui.base.BaseFragment
 import kotlinx.coroutines.launch
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>({ inflater, parent, attach -> FragmentHomeBinding.inflate(inflater, parent, attach) }) {
@@ -180,9 +181,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>({ inflater, parent, attac
 
         binding.tvErrorMessage.text = state.errorMessage
         binding.tvEmpty.text = if (state.isSearching) {
-            "Film \"${state.query}\" tidak ditemukan.\nCoba kata kunci lain."
+            getString(R.string.home_search_empty, state.query)
         } else {
-            "Belum ada film yang tersedia"
+            getString(R.string.home_empty)
         }
 
         movieAdapter.submitList(state.movies)
@@ -198,7 +199,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>({ inflater, parent, attac
         val errorMessage = state.errorMessage
         if (errorMessage != null && state.movies.isNotEmpty()) {
             Snackbar.make(binding.root, errorMessage, Snackbar.LENGTH_LONG)
-                .setAction("Coba Lagi") { viewModel.retry() }
+                .setAction(R.string.action_retry) { viewModel.retry() }
                 .show()
             viewModel.consumeError()
         }
@@ -212,12 +213,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>({ inflater, parent, attac
     }
 
     private fun renderSectionHeader(state: HomeUiState) {
-        val title = if (state.isSearching) "Hasil Pencarian" else "Sedang Tayang"
+        val title = if (state.isSearching) {
+            getString(R.string.section_search_result)
+        } else {
+            getString(R.string.section_now_playing)
+        }
         val subtitle = when {
-            state.isSearchPending -> "Menunggu kamu selesai mengetik…"
-            state.isSearching && state.isInitialLoading -> "Mencari \"${state.query}\"…"
-            state.isSearching -> "\"${state.query}\" • ${state.totalResults} film ditemukan"
-            else -> "Film yang sedang tayang di bioskop"
+            state.isSearchPending -> getString(R.string.section_search_pending)
+            state.isSearching && state.isInitialLoading -> getString(R.string.section_search_loading, state.query)
+            state.isSearching -> getString(R.string.section_search_count, state.query, state.totalResults)
+            else -> getString(R.string.section_now_playing_subtitle)
         }
         headerAdapter.setHeader(title, subtitle)
     }

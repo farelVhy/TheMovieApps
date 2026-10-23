@@ -1,4 +1,4 @@
-package id.co.themovieapps.ui.base
+package id.co.josal.merchant.themovieapps.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseFragment<VB : ViewBinding>(private val inflate: (layoutInflater: LayoutInflater, parent: ViewGroup?, attachToParent: Boolean) -> VB) : Fragment() {
+abstract class BaseFragment<VB : ViewBinding>(
+    private val inflate: (layoutInflater: LayoutInflater, parent: ViewGroup?, attachToParent: Boolean) -> VB
+) : Fragment() {
 
     private var _binding: VB? = null
     protected val binding get() = _binding!!

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/menu_pendapatan"
+        android:id="@+id/menu_film"
         android:icon="@drawable/ic_movie"
-        android:title="Film" />
+        android:title="@string/menu_film" />
     <item
-        android:id="@+id/menu_riwayat_order"
+        android:id="@+id/menu_schedule"
         android:icon="@drawable/ic_schedule"
-        android:title="Jadwal tayang" />
+        android:title="@string/menu_schedule" />
     <item
-        android:id="@+id/menu_pesan"
+        android:id="@+id/menu_profile"
         android:icon="@drawable/ic_person"
-        android:title="Profile" />
+        android:title="@string/menu_profile" />
 </menu>

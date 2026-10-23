@@ -1,4 +1,58 @@
 <resources>
     <string name="app_name">TheMovieApps</string>
     <string name="movie_poster">Poster film</string>
+
+        <!-- Umum -->
+        <string name="action_retry">Coba Lagi</string>
+        <string name="action_back_home">Kembali ke Beranda</string>
+
+        <!-- Bottom navigation -->
+        <string name="menu_film">Film</string>
+        <string name="menu_schedule">Jadwal Tayang</string>
+        <string name="menu_profile">Profil</string>
+
+        <!-- Home -->
+        <string name="home_greeting_title">Mau nonton apa hari ini?</string>
+        <string name="home_greeting_subtitle">Temukan film favoritmu dari ribuan judul</string>
+        <string name="search_hint">Cari judul film…</string>
+        <string name="search_icon_desc">Cari</string>
+        <string name="search_clear_desc">Hapus pencarian</string>
+        <string name="section_now_playing">Sedang Tayang</string>
+        <string name="section_now_playing_subtitle">Film yang sedang tayang di bioskop</string>
+        <string name="section_search_result">Hasil Pencarian</string>
+        <string name="section_search_pending">Menunggu kamu selesai mengetik…</string>
+        <string name="section_search_loading">Mencari \"%1$s\"…</string>
+        <string name="section_search_count">\"%1$s\" • %2$d film ditemukan</string>
+        <string name="home_error_title">Gagal memuat film</string>
+        <string name="home_empty">Belum ada film yang tersedia</string>
+        <string name="home_search_empty">Film \"%1$s\" tidak ditemukan.\nCoba kata kunci lain.</string>
+
+        <!-- Detail -->
+        <string name="detail_not_found">Film tidak ditemukan</string>
+        <string name="detail_error_title">Gagal memuat detail film</string>
+        <string name="detail_backdrop_desc">Backdrop film</string>
+        <string name="detail_synopsis">Sinopsis</string>
+        <string name="detail_synopsis_empty">Sinopsis belum tersedia.</string>
+        <string name="detail_vote_count">(%1$d suara)</string>
+        <string name="detail_tagline">“%1$s”</string>
+        <string name="detail_runtime_hours">%1$dj %2$dm</string>
+        <string name="detail_runtime_minutes">%1$dm</string>
+        <string name="detail_reviews">Ulasan</string>
+        <string name="detail_reviews_count">Ulasan (%1$d)</string>
+        <string name="trailer_watch_on_youtube">Tonton di YouTube</string>
+        <string name="trailer_cannot_play">Trailer tidak bisa diputar di aplikasi</string>
+
+        <!-- Ulasan -->
+        <string name="review_avatar_desc">Avatar pengulas</string>
+        <string name="review_read_more">Baca selengkapnya</string>
+        <string name="review_collapse">Tutup</string>
+
+        <!-- Profil -->
+        <string name="profile_title">Profil</string>
+        <string name="profile_placeholder_title">Halaman profil sedang disiapkan</string>
+        <string name="profile_placeholder_message">Fitur profil akan segera hadir di versi berikutnya.</string>
+
+        <!-- Maintenance -->
+        <string name="maintenance_title">Fitur Sedang Dikerjakan</string>
+        <string name="maintenance_message">Fitur %1$s sedang dalam pengerjaan. Nantikan di pembaruan berikutnya, ya!</string>
 </resources>
