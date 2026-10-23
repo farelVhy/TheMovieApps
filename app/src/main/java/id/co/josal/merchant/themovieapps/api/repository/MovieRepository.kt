@@ -14,6 +14,9 @@ class MovieRepository(private val service: MasterService = ApiClient.service) {
     suspend fun getNowPlaying(page: Int): Resource<MovieResponse> =
         ApiHelper.safeApiCall { service.getNowPlaying(page) }
 
+    suspend fun searchMovies(query: String, page: Int): Resource<MovieResponse> =
+        ApiHelper.safeApiCall { service.searchMovies(query, page) }
+
     suspend fun getMovieDetail(movieId: Int): Resource<MovieDetailResponse> =
         ApiHelper.safeApiCall { service.getMovieDetail(movieId) }
 

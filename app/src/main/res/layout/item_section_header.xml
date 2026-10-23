@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Baris judul di posisi pertama grid: "Sedang Tayang" / "Hasil Pencarian".
+     Ikut ter-scroll bersama poster, jadi saat scroll hanya search bar yang tersisa di atas. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="12dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="6dp">
+
+    <TextView
+        android:id="@+id/tv_section_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="Sedang Tayang" />
+
+    <TextView
+        android:id="@+id/tv_section_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/tmdb_light_blue"
+        android:textSize="12sp"
+        tools:text="Film yang sedang tayang di bioskop" />
+</LinearLayout>

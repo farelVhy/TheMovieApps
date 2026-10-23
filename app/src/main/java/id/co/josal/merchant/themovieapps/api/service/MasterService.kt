@@ -15,6 +15,13 @@ interface MasterService {
         @Query("page") page: Int = 1
     ): MovieResponse
 
+    // Pencarian film. Bentuk responsnya sama dengan now_playing, jadi MovieResponse bisa dipakai ulang
+    @GET("search/movie")
+    suspend fun searchMovies(
+        @Query("query") query: String,
+        @Query("page") page: Int = 1
+    ): MovieResponse
+
     // Informasi utama film (judul, sinopsis, durasi, genre, dll)
     @GET("movie/{movie_id}")
     suspend fun getMovieDetail(
