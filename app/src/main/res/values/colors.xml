@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="tmdb_dark_blue">#0d253f</color>
+    <color name="tmdb_light_blue">#01b4e4</color>
+    <color name="tmdb_green">#90cea1</color>
+    <color name="grey_light">#F5F5F5</color>
+    <color name="tmdb_bar">#081A2D</color>
+    <color name="rating_yellow">#F5C518</color>
 </resources>
