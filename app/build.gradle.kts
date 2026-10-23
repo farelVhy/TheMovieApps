@@ -61,6 +61,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:13.0.0")
-    implementation("androidx.viewpager2:viewpager2:1.1.0")
+    implementation(libs.android.youtube.player.core)
+    implementation(libs.androidx.viewpager2)
 }
